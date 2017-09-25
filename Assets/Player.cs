@@ -7,9 +7,11 @@ public class Player
 	private int health = 100;
 	private int hunger = 0;
 	private int thirst = 0;
+	private Weapon primaryWeapon;
 
 	public Player ()
 	{
+		primaryWeapon = new Weapon (1);
 	}
 
 	public string GetName() {
