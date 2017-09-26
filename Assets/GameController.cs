@@ -13,15 +13,26 @@ public class GameController : MonoBehaviour {
 	Text health;
 	Text hunger;
 	Text thirst;
+	Text weapon;
 
 	//player
 	private GameObject pekka;
 
 	//buttons to move player
-	private Button bLeft;
-	private Button bRight;
-	private Button bUp;
-	private Button bDown;
+	Button bLeft;
+	Button bRight;
+	Button bUp;
+	Button bDown;
+
+	//buttons to change weapons
+	Button bKnife;
+	Button bShotgun;
+	Button bRifle;
+
+	Item carrot = new Item (1);
+	Item waterbottle = new Item (2);
+
+	Text endgame;
 
 	// Use this for initialization
 	void Start () {
@@ -37,6 +48,8 @@ public class GameController : MonoBehaviour {
 		hunger.text = "Hunger: " + player.GetHunger ();
 		thirst = GameObject.Find ("Thirst").GetComponent<Text> ();
 		thirst.text = "Thirst: " + player.GetThirst ();
+		weapon = GameObject.Find ("Weapon").GetComponent<Text> ();
+		weapon.text = "Weapon: " + player.GetPrimaryWeapon ().GetName ();
 
 		//creates the player
 		pekka = GameObject.Find ("Pekka");
@@ -48,18 +61,67 @@ public class GameController : MonoBehaviour {
 		bDown = GameObject.Find ("ButtonDown").GetComponent<Button> ();
 
 		//controls how much the player is moving by every click
-		bLeft.onClick.AddListener(() => pekka.transform.Translate(-1,0,0));
-		bRight.onClick.AddListener (() => pekka.transform.Translate (1,0,0));
-		bUp.onClick.AddListener (() => pekka.transform.Translate (0,1,0));
-		bDown.onClick.AddListener (() => pekka.transform.Translate (0,-1,0));
+		bLeft.onClick.AddListener(() => MovePekka("left"));
+		bRight.onClick.AddListener (() => MovePekka("right"));
+		bUp.onClick.AddListener (() => MovePekka("up"));
+		bDown.onClick.AddListener (() => MovePekka("down"));
 
+		//creates the buttons to change weapons
+		bKnife = GameObject.Find ("BKnife").GetComponent<Button> ();
+		bRifle = GameObject.Find ("BRifle").GetComponent<Button> ();
+		bShotgun = GameObject.Find ("BShotgun").GetComponent<Button> ();
+
+		//controls weapon changing
+		bKnife.onClick.AddListener(() => ChangeWeapon(1));
+		bRifle.onClick.AddListener(() => ChangeWeapon(2));
+		bShotgun.onClick.AddListener(() => ChangeWeapon(3));
 		
+	}
+
+	void ShowStats() {
+		pname.text = "Hunter: " + player.GetName ();
+		strength.text = "Strength: " + player.GetStrength ();
+		hunger.text = "Hunger: " + player.GetHunger ();
+		thirst.text = "Thirst: " + player.GetThirst ();
+		health.text = "Health: " + player.GetHealth ();
+		weapon.text = "Weapon: " + player.GetPrimaryWeapon ().GetName ();
+		if (player.GetHealth () == 0.0) {
+			EndGame ();
+		}
+	}
+
+	void MovePekka(string direction) {
+		if (direction == "left") {
+			pekka.transform.Translate (-1, 0, 0);
+		}
+		if (direction == "right") {
+			pekka.transform.Translate (1, 0, 0);
+		}
+		if (direction == "up") {
+			pekka.transform.Translate (0, 1, 0);
+		}
+		if (direction == "down") {
+			pekka.transform.Translate (0,-1,0);
+		}
+		player.ChangeHunger (1);
+		player.ChangeThirst (3);
+		ShowStats ();
+	}
+
+	//changes a weapon
+	void ChangeWeapon(int set) {
+		player.SetPrimaryWeapon (set);
+		ShowStats ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-
 		
+	}
+
+	public void EndGame() {
+		endgame = GameObject.Find ("EndGame").GetComponent<Text> ();
+		endgame.text = "Pekka has died. Game over, man! Game over!";
 	}
 }
