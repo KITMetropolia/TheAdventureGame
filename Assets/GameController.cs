@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-	Player player = new Player();
+	Player player;
 
 	//player statistics
 	Text pname;
@@ -14,9 +14,6 @@ public class GameController : MonoBehaviour {
 	Text hunger;
 	Text thirst;
 	Text weapon;
-
-	//player
-	private GameObject pekka;
 
 	//buttons to move player
 	Button bLeft;
@@ -29,13 +26,18 @@ public class GameController : MonoBehaviour {
 	Button bShotgun;
 	Button bRifle;
 
-	Item carrot = new Item (1);
-	Item waterbottle = new Item (2);
+	//List of items
+	Item carrot;
+	Item waterbottle;
 
-	Text endgame;
+	Text info;
 
 	// Use this for initialization
 	void Start () {
+		info = GameObject.Find ("Info").GetComponent<Text> ();
+
+		//creates the player
+		player = GameObject.Find ("Pekka").AddComponent<Player> ();
 
 		//show statistics of player
 		pname = GameObject.Find ("Name").GetComponent<Text> ();
@@ -50,9 +52,6 @@ public class GameController : MonoBehaviour {
 		thirst.text = "Thirst: " + player.GetThirst ();
 		weapon = GameObject.Find ("Weapon").GetComponent<Text> ();
 		weapon.text = "Weapon: " + player.GetPrimaryWeapon ().GetName ();
-
-		//creates the player
-		pekka = GameObject.Find ("Pekka");
 
 		//creates the buttons to move player
 		bLeft = GameObject.Find ("ButtonLeft").GetComponent<Button> ();
@@ -75,6 +74,12 @@ public class GameController : MonoBehaviour {
 		bKnife.onClick.AddListener(() => ChangeWeapon(1));
 		bRifle.onClick.AddListener(() => ChangeWeapon(2));
 		bShotgun.onClick.AddListener(() => ChangeWeapon(3));
+
+		carrot = GameObject.Find ("Carrot").AddComponent<Item> ();
+		carrot.SetItemStats (1);
+
+		waterbottle = GameObject.Find ("Waterbottle").AddComponent<Item> ();
+		waterbottle.SetItemStats (2);
 		
 	}
 
@@ -92,16 +97,16 @@ public class GameController : MonoBehaviour {
 
 	void MovePekka(string direction) {
 		if (direction == "left") {
-			pekka.transform.Translate (-1, 0, 0);
+			player.transform.Translate (-1, 0, 0);
 		}
 		if (direction == "right") {
-			pekka.transform.Translate (1, 0, 0);
+			player.transform.Translate (1, 0, 0);
 		}
 		if (direction == "up") {
-			pekka.transform.Translate (0, 1, 0);
+			player.transform.Translate (0, 1, 0);
 		}
 		if (direction == "down") {
-			pekka.transform.Translate (0,-1,0);
+			player.transform.Translate (0,-1,0);
 		}
 		player.ChangeHunger (1);
 		player.ChangeThirst (3);
@@ -121,7 +126,6 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void EndGame() {
-		endgame = GameObject.Find ("EndGame").GetComponent<Text> ();
-		endgame.text = "Pekka has died. Game over, man! Game over!";
+		info.text = "Pekka has died. Game over, man! Game over!";
 	}
 }

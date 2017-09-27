@@ -1,33 +1,38 @@
 ﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class Weapon
-{
-	private string name = "weapon";
+public class Weapon {
+	private string wname = "weapon";
 	private string image = "weapon";
 	private double mass = 1.0;
 	private int efficiency = 1;
 	private int range = 1;
+
+	public Weapon () {
+
+	}
 
 	public Weapon (int weapon)
 	{
 		switch (weapon)
 		{
 		case 1:
-			name = "Knife";
+			wname = "Knife";
 			image = "knife";
 			mass = 1.0;
 			efficiency = 1;
 			range = 1;
 			break;
 		case 2:
-			name = "Rifle";
+			wname = "Rifle";
 			image = "rifle";
 			mass = 4.0;
 			efficiency = 10;
 			range = 10;
 			break;
 		case 3:
-			name = "Shotgun";
+			wname = "Shotgun";
 			image = "shotgun";
 			mass = 6.0;
 			efficiency = 15;
@@ -37,7 +42,7 @@ public class Weapon
 	}
 
 	public string GetName() {
-		return this.name;
+		return this.wname;
 	}
 
 	public string GetImage() {

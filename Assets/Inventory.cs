@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class Inventory
-{
+public class Inventory{
 	private ArrayList items = new ArrayList();
 	private ArrayList weapons = new ArrayList();
 	//private int capacityItems = 10;

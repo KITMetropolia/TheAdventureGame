@@ -1,15 +1,22 @@
 ﻿using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class Player
-{
+public class Player : MonoBehaviour {
 
 	//player's initial stats
-	private string name = "Pekka";
+	private string pname = "Pekka";
 	private double strength = 100.0;
 	private double health = 100.0;
 	private double hunger = 0.0;
 	private double thirst = 0.0;
 	private Weapon primaryWeapon = new Weapon(1);
+
+	//private GameObject triggeringNPC;
+	private bool triggering;
+
+	//public GameObject NPCText;
 
 	public Player ()
 	{
@@ -17,11 +24,11 @@ public class Player
 	}
 
 	public string GetName() {
-		return this.name;
+		return this.pname;
 	}
 
 	public void SetName(string newName) {
-		name = newName;
+		pname = newName;
 	}
 
 	public double GetStrength() {
@@ -90,5 +97,26 @@ public class Player
 	public void Move(string direction) {
 		
 	}
+/*
+	void update () {
+		if (OnTriggering) {
+
+		}
+	}
+
+	void OnTriggering (Collider other) {
+		if (other.tag == "NPC") {
+			OnTriggering = true;
+			triggeringNpc = other.gameObject;
+		}
+	}
+
+	void OnTriggerExit (Collider other) {
+		if (other.tag == "NPC") {
+			OnTriggering = false;
+			triggeringNpc = null;
+		}
+	}
+	*/
 }
 
