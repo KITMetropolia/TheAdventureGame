@@ -35,6 +35,14 @@ public class Item : MonoBehaviour {
 			hunger = 0.0;
 			thirst = 5.0;
 			break;
+		case 3:
+			iname = "Rabbit";
+			image = "rabbit";
+			mass = 10.0;
+			heal = 15.0;
+			hunger = 35.0;
+			thirst = 0.0;
+			break;
 		}
 	}
 
