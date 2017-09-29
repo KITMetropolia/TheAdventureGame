@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour {
 	//List of items
 	Item carrot;
 	Item waterbottle;
+	Item rabbit;
 
 	Text info;
 
@@ -80,6 +81,9 @@ public class GameController : MonoBehaviour {
 
 		waterbottle = GameObject.Find ("Waterbottle").AddComponent<Item> ();
 		waterbottle.SetItemStats (2);
+		
+		rabbit = GameObject.Find ("Rabbit").AddComponent<Item> ();
+		rabbit.SetItemStats (3);
 		
 	}
 
