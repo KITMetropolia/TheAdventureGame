@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
+  - Rabbit
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3125326249
+    locked: 0
+  - name: Item
+    uniqueID: 1443576755
+    locked: 0
+  - name: Npc
+    uniqueID: 1845583475
+    locked: 0
+  - name: Player
+    uniqueID: 1387084057
     locked: 0
