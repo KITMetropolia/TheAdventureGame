@@ -2,11 +2,11 @@
 using UnityEngine; 
 using System.Collections;
 
-public class Npc : MonoBehaviour 
-{
+public class Npc : MonoBehaviour {
 
-	public GameObject player;
+	public Player player;
 
+	public int health;
 	public Boolean isFriendly;
 
 	//a variable to store this game object's Transform  
@@ -36,7 +36,14 @@ public class Npc : MonoBehaviour
 
 			Follow();  
 		}  
-	}  
+	}
+
+	public void ChangeHealth (int amount) {
+		health -= amount;
+		if (health <= 0) {
+			gameObject.SetActive (false);
+		}
+	}
 
 	//makes the enemy follow the player  
 	private void Follow()  

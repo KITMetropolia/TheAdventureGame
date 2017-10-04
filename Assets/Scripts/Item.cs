@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Item : MonoBehaviour {
 
-	public float heal;
-	public float food;
-	public float drink;
+	public int heal;
+	public int food;
+	public int drink;
 
 	public Item () {
 
 	}
-		
 }

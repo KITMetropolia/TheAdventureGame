@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject player;
+	public GameObject pekka;
 
-	public Player pekka;
+	public Player player;
+
+	public Button bKnife;
+	public Button bShotgun;
+	public Button bRifle;
 
 	public Text pname;
 	public Text weapon;
@@ -19,6 +23,10 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		bKnife.onClick.AddListener (() => player.setWeapon ("Knife"));
+		bShotgun.onClick.AddListener (() => player.setWeapon ("Shotgun"));
+		bRifle.onClick.AddListener (() => player.setWeapon ("Rifle"));
+
 		ShowStats ();
 	}
 	
@@ -28,18 +36,18 @@ public class GameController : MonoBehaviour {
 	}
 
 	void ShowStats() {
-		pname.text = "Hunter: " + pekka.GetName ();
-		weapon.text = "Weapon: " + pekka.GetWeapon ();
-		hunger.text = "Hunger: " + pekka.GetHunger ();
-		thirst.text = "Thirst: " + pekka.GetThirst ();
-		health.text = "Health: " + pekka.GetHealth ();
-		if (pekka.GetHealth () == 0.0) {
+		pname.text = "Hunter: " + player.GetName ();
+		weapon.text = "Weapon: " + player.GetWeapon ();
+		hunger.text = "Hunger: " + player.GetHunger ();
+		thirst.text = "Thirst: " + player.GetThirst ();
+		health.text = "Health: " + player.GetHealth ();
+		if (player.GetHealth () == 0) {
 			EndGame ();
 		}
 	}
 
 	public void EndGame() {
 		info.text = "Pekka has died. Game over, man! Game over!";
-		player.SetActive (false);
+		pekka.SetActive (false);
 	}
 }

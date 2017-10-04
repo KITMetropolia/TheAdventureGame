@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Item
-  - Rabbit
+  - Npc
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1387084057
+    locked: 0
+  - name: Weapon
+    uniqueID: 1815035017
     locked: 0

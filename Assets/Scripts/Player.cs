@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public string pname = "Pekka";
-	public string weapon = "Knife";
-	public float health = 100.0f;
-	public float hunger = 0.0f;
-	public float thirst = 0.0f;
+	public string pname;
+	public string weapon;
+	public int health;
+	public int hunger;
+	public int thirst;
+
+	private const int maxHealth = 1000;
+	private const int maxHunger = 1000;
+	private const int maxThirst = 1000;
 
 	public Player () {
 
@@ -26,48 +30,57 @@ public class Player : MonoBehaviour {
 		return this.weapon;
 	}
 
-	public float GetHealth() {
+	public void setWeapon(string newWeapon) {
+		weapon = newWeapon;
+	}
+
+	public int GetHealth() {
 		return this.health;
 	}
 
-	public void ChangeHealth(float amount) {
+	public void ChangeHealth(int amount) {
 		health += amount;
-		if (health > 100.0f) {
-			health = 100.0f;
+		if (health > maxHealth) {
+			health = maxHealth;
 		}
-		if (health <= 0.0f) {
-			health = 0.0f;
+		if (health <= 0) {
+			health = 0;
 		}
 	}
 
-	public float GetHunger() {
+	public int GetHunger() {
 		return this.hunger;
 	}
 
-	public void ChangeHunger(float amount) {
+	public void ChangeHunger(int amount) {
 		hunger += amount;
-		if (hunger > 100.0f) {
-			hunger = 100.0f;
-			ChangeHealth (-1.0f);
+		if (hunger > maxHunger) {
+			hunger = maxHunger;
+			ChangeHealth (-1);
 		}
-		if (hunger < 0.0f) {
-			hunger = 0.0f;
+		if (hunger < 0) {
+			hunger = 0;
 		}
 	}
 
-	public float GetThirst() {
+	public int GetThirst() {
 		return this.thirst;
 	}
 
-	public void ChangeThirst(float amount) {
+	public void ChangeThirst(int amount) {
 		thirst += amount;
-		if (thirst > 100.0f) {
-			thirst = 100.0f;
-			ChangeHealth (-1.0f);
+		if (thirst > maxThirst) {
+			thirst = maxThirst;
+			ChangeHealth (-1);
 		}
-		if (thirst < 0.0f) {
-			thirst = 0.0f;
+		if (thirst < 0) {
+			thirst = 0;
 		}
 	}
 
+	public void ChangeStats (int heal, int food, int drink) {
+		ChangeHealth (heal);
+		ChangeHunger (food);
+		ChangeThirst (drink);
+	}
 }

@@ -5,7 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
-	public Player pekka;
+	public Player player;
+
+	public Weapon knife;
+	public Weapon shotgun;
+	public Weapon rifle;
+
+	public Item carrot;
+	public Item waterbottle;
+
+	public Npc rabbit;
 
 	public float speed;
 
@@ -28,10 +37,10 @@ public class PlayerController : MonoBehaviour {
 		bUp.onClick.AddListener (() => moveVertical = 0.1f);
 		bDown.onClick.AddListener (() => moveVertical = -0.1f);
 
-		bLeft.onClick.AddListener (() => ChangeStats (0.0f, 0.1f, 0.3f));
-		bRight.onClick.AddListener (() => ChangeStats (0.0f, 0.1f, 0.3f));
-		bUp.onClick.AddListener (() => ChangeStats (0.0f, 0.1f, 0.3f));
-		bDown.onClick.AddListener (() => ChangeStats (0.0f, 0.1f, 0.3f));
+		bLeft.onClick.AddListener (() => player.ChangeStats (0, 1, 3));
+		bRight.onClick.AddListener (() => player.ChangeStats (0, 1, 3));
+		bUp.onClick.AddListener (() => player.ChangeStats (0, 1, 3));
+		bDown.onClick.AddListener (() => player.ChangeStats (0, 1, 3));
 
 	}
 	
@@ -46,18 +55,20 @@ public class PlayerController : MonoBehaviour {
 		moveVertical = 0.0f;
 	}
 
-	void ChangeStats (float heal, float food, float drink) {
-		pekka.ChangeHealth (heal);
-		pekka.ChangeHunger (food);
-		pekka.ChangeThirst (drink);
-	}
-
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("Item")) {
+			if (other.gameObject.name == "Carrot") {
+				player.ChangeStats (carrot.heal, carrot.food, carrot.drink);
+			}
+			if (other.gameObject.name == "Waterbottle") {
+				player.ChangeStats (waterbottle.heal, waterbottle.food, waterbottle.drink);
+			}
 			other.gameObject.SetActive (false);
 		}
-		if (other.gameObject.CompareTag ("Rabbit")) {
-			other.gameObject.SetActive (false);
+		if (other.gameObject.CompareTag ("Npc")) {
+			if (other.gameObject.name == "Rabbit") {
+				rabbit.ChangeHealth (shotgun.efficiency);
+			}
 		}
 	}
 }
