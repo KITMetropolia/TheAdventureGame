@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public string pname;
-	public string weapon;
-	public int health;
-	public int hunger;
-	public int thirst;
+	private string pname = "Pekka";
+	private string weapon = "Knife";
+	private int health = 1000;
+	private int hunger = 0;
+	private int thirst = 0;
 
 	private const int maxHealth = 1000;
 	private const int maxHunger = 1000;

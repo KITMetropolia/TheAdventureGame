@@ -20,12 +20,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4291952340936098}
   - component: {fileID: 212086906661540848}
+  - component: {fileID: 114076954328343538}
   - component: {fileID: 114813381285117834}
   - component: {fileID: 50796812966667146}
   - component: {fileID: 58600872187474252}
   m_Layer: 0
   m_Name: Rabbit
-  m_TagString: Npc
+  m_TagString: Rabbit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +51,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1258922417413228}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -78,6 +79,19 @@ CircleCollider2D:
   m_Offset: {x: -0.1, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &114076954328343538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258922417413228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f649268160da44d4ca922427a60b6377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 114082252051511846, guid: a9e3fa33136acbf41aa6bf72cdae1e6f, type: 2}
+  rabbit: {fileID: 114813381285117834}
 --- !u!114 &114813381285117834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,9 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1356e68ddb7534fab9fb1e8912fb4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 114082252051511846, guid: a9e3fa33136acbf41aa6bf72cdae1e6f, type: 2}
-  health: 10
-  isFriendly: 0
+  damage: -20
 --- !u!212 &212086906661540848
 SpriteRenderer:
   m_ObjectHideFlags: 1

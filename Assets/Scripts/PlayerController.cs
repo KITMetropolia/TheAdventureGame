@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
 
 	public Player player;
 
+	public GameObject pekka;
+
 	public Weapon knife;
 	public Weapon shotgun;
 	public Weapon rifle;
@@ -65,10 +67,9 @@ public class PlayerController : MonoBehaviour {
 			}
 			other.gameObject.SetActive (false);
 		}
-		if (other.gameObject.CompareTag ("Npc")) {
-			if (other.gameObject.name == "Rabbit") {
-				rabbit.ChangeHealth (shotgun.efficiency);
-			}
+		if (other.gameObject.CompareTag ("Rabbit")) {
+				player.ChangeHealth (rabbit.GetDamage ());
+			Debug.Log (rabbit.GetDamage ());
 		}
 	}
 }

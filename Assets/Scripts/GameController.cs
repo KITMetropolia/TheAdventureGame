@@ -26,8 +26,6 @@ public class GameController : MonoBehaviour {
 		bKnife.onClick.AddListener (() => player.setWeapon ("Knife"));
 		bShotgun.onClick.AddListener (() => player.setWeapon ("Shotgun"));
 		bRifle.onClick.AddListener (() => player.setWeapon ("Rifle"));
-
-		ShowStats ();
 	}
 	
 	// Update is called once per frame

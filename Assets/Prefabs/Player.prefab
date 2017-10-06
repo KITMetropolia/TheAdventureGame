@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 58431110487658894}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,11 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9808330bd893b1e4691d787a4c227192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pname: Pekka
-  weapon: Knife
-  health: 1000
-  hunger: 0
-  thirst: 0
 --- !u!114 &114444143268203670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 114082252051511846}
+  pekka: {fileID: 1340473043032184}
   knife: {fileID: 114510438792339390, guid: 4dbbc9003d2eb0f4998b62df591d0d3c, type: 2}
   shotgun: {fileID: 114777500647426780, guid: a3752bdb8792a0043a56786fcbc91bf4, type: 2}
   rifle: {fileID: 114427601499951774, guid: 7b0d88b71e2804e49a3a63688a7b8623, type: 2}

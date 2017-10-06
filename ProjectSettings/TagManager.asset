@@ -7,6 +7,7 @@ TagManager:
   - Item
   - Npc
   - Weapon
+  - Rabbit
   layers:
   - Default
   - TransparentFX
