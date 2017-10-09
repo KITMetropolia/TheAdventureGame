@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour {
 		ShowStats ();
 	}
 
+	// Shows player's statistics
 	void ShowStats() {
 		pname.text = "Hunter: " + player.GetName ();
 		weapon.text = "Weapon: " + player.GetWeapon ();
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	// If player dies
 	public void EndGame() {
 		info.text = "Pekka has died. Game over, man! Game over!";
 		pekka.SetActive (false);

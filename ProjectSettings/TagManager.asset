@@ -8,6 +8,7 @@ TagManager:
   - Npc
   - Weapon
   - Rabbit
+  - Moose
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 3125326249
+    locked: 0
+  - name: Obstacle
+    uniqueID: 1247596817
     locked: 0
   - name: Item
     uniqueID: 1443576755

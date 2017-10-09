@@ -38,11 +38,12 @@ public class NpcController : MonoBehaviour {
 	private void Follow()  
 	{  
 		//only follow the player if this enemy is 3 units away from the player
-		if(Vector2.Distance(myTransform.position, playerTransform.position) <=3)  
+		if(Vector2.Distance(myTransform.position, playerTransform.position) <= 3)  
 		{  
-			//move the enemy
-			myTransform.position = Vector2.MoveTowards (myTransform.position, playerTransform.position, 1 * Time.deltaTime);
-		}  
+			myTransform.position = Vector2.MoveTowards (myTransform.position, playerTransform.position, 0.5f * Time.deltaTime);
+		}
+			
+			
 	}
 
 	void OnTriggerEnter2D(Collider2D other)  

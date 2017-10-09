@@ -46,6 +46,7 @@ public class Player : MonoBehaviour {
 		if (health <= 0) {
 			health = 0;
 		}
+
 	}
 
 	public int GetHunger() {
@@ -77,7 +78,7 @@ public class Player : MonoBehaviour {
 			thirst = 0;
 		}
 	}
-
+		
 	public void ChangeStats (int heal, int food, int drink) {
 		ChangeHealth (heal);
 		ChangeHunger (food);

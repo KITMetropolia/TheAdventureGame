@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour {
 
 	public GameObject pekka;
 
+	public Text info;
+
 	public Weapon knife;
 	public Weapon shotgun;
 	public Weapon rifle;
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour {
 	public Button bUp;
 	public Button bDown;
 
+	public Button bAttack;
+
 	private float moveHorizontal = 0.0f;
 	private float moveVertical = 0.0f;
 
@@ -44,20 +48,34 @@ public class PlayerController : MonoBehaviour {
 		bUp.onClick.AddListener (() => player.ChangeStats (0, 1, 3));
 		bDown.onClick.AddListener (() => player.ChangeStats (0, 1, 3));
 
+		bAttack.onClick.AddListener (() => Attack ());
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 
 		rb2d.transform.Translate (movement * speed);
 
-		moveHorizontal = 0.0f;
-		moveVertical = 0.0f;
+		moveHorizontal = 0f;
+		moveVertical = 0f;
+
 	}
 
+	void Attack () {
+		
+	}
+
+	// When player collides with something
 	void OnTriggerEnter2D(Collider2D other) {
+
+		// Player collides with finish marker
+		if (other.gameObject.CompareTag ("Finish")) {
+			info.text = "Pekka! You win a won!";
+		}
+
+		// Player collides with item
 		if (other.gameObject.CompareTag ("Item")) {
 			if (other.gameObject.name == "Carrot") {
 				player.ChangeStats (carrot.heal, carrot.food, carrot.drink);
@@ -67,9 +85,11 @@ public class PlayerController : MonoBehaviour {
 			}
 			other.gameObject.SetActive (false);
 		}
+
+		// Player collides with rabbit
 		if (other.gameObject.CompareTag ("Rabbit")) {
-				player.ChangeHealth (rabbit.GetDamage ());
-			Debug.Log (rabbit.GetDamage ());
+			bAttack.onClick.AddListener (() => other.gameObject.SetActive (false));
+			player.ChangeHealth (rabbit.damage);
 		}
 	}
 }
