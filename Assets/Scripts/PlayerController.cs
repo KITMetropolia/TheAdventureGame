@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour {
 	public Item waterbottle;
 
 	public Npc rabbit;
+	
+	public Human human;
 
 	public float speed;
 
@@ -90,6 +92,11 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Rabbit")) {
 			bAttack.onClick.AddListener (() => other.gameObject.SetActive (false));
 			player.ChangeHealth (rabbit.damage);
+		}
+		// Player collides with human
+		if (other.gameObject.CompareTag ("Human")) {
+			bAttack.onClick.AddListener (() => other.gameObject.SetActive (false));
+			player.ChangeHealth (human.damage);
 		}
 	}
 }
