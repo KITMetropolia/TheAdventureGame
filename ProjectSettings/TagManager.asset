@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Rabbit
   - Moose
+  - Human
   layers:
   - Default
   - TransparentFX

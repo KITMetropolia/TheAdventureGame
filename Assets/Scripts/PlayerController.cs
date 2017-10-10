@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 
 	public Npc rabbit;
 	
-	public Human human;
+	public Npc human;
 
 	public float speed;
 
@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour {
 
 	private float moveHorizontal = 0.0f;
 	private float moveVertical = 0.0f;
+
+	public Text cname;
+	public Text dialogue;
 
 	// Use this for initialization
 	void Start () {
@@ -54,8 +57,12 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		
+	}
+
+	void FixedUpdate () {
+			
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 
 		rb2d.transform.Translate (movement * speed);

@@ -8,11 +8,16 @@ public class Npc : MonoBehaviour {
 	public int damage = -20;
 	private Boolean isFriendly;
 
-	void Start () {
-		if (this.tag == "Rabbit") {
-			this.health = 10;
-			this.damage = -10;
-			this.isFriendly = false;
+	void Awake () {
+		if (tag == "Rabbit") {
+			health = 10;
+			damage = -10;
+			isFriendly = false;
+		}
+		if (tag == "Human") {
+			health = 100;
+			damage = -100;
+			isFriendly = false;
 		}
 	}
 
@@ -21,7 +26,10 @@ public class Npc : MonoBehaviour {
 	}
 
 	public void ChangeHealth (int amount) {
-		this.health -= amount;
+		health -= amount;
+		if (health <= 0) {
+			health = 0;
+		}
 	}
 
 	public int GetDamage () {
@@ -33,6 +41,6 @@ public class Npc : MonoBehaviour {
 	}
 
 	public void ChangeIsFriendly (Boolean status) {
-		this.isFriendly = status;
+		isFriendly = status;
 	}
 }
