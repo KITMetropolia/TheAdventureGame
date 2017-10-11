@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
 
 	public Button bKnife;
 	public Button bShotgun;
-	public Button bRifle;
+	public Button Rifle;
 
 	public Text pname;
 	public Text weapon;
@@ -23,9 +23,9 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		bKnife.onClick.AddListener (() => player.setWeapon ("Knife"));
-		bShotgun.onClick.AddListener (() => player.setWeapon ("Shotgun"));
-		bRifle.onClick.AddListener (() => player.setWeapon ("Rifle"));
+		//bKnife.onClick.AddListener (() => player.setWeapon ("Knife"));
+		//bShotgun.onClick.AddListener (() => player.setWeapon ("Shotgun"));
+		//bRifle.onClick.AddListener (() => player.setWeapon ("Rifle"));
 	}
 	
 	// Update is called once per frame
