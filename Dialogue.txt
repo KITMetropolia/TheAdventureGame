@@ -1,0 +1,11 @@
+Moose1: Hello Stranger! Welcome to our forrest! I will help you! You have to collect certain items and to do that you have to find every moose in the forrest. Each of them will tell you a riddle and you have to solve it to be able to get a item from the moose.
+You need to be careful, there are evil creatures in the forest that will try to eat you! Anyways here is the first riddle: Take off my skin – I won’t cry, but you will! What am I?   A= apple , B= human or C= onion?
+
+Moose2: Hello Human! You are not one of those gangsters are you? You dont look like them so, Bob’s father has 4 children. Momo, Meme, and Mumu are three of them. Who’s the fourth?. A=Mimu B=Bob or C=Mame  ?
+
+Moose3: Hello! You look like you need help. Alright, Your dad tells you that he will pay you $6.00 an hour for the 6 seconds that you take to wash your hands before dinner.
+How much did you make for washing your hands? A=1 cnt , B= 10 cnt or C= 11cnt?
+
+
+
+
