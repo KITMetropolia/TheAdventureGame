@@ -145,16 +145,38 @@ public class NpcController : MonoBehaviour {
 		}
 
 		if (this.name == "Moose2") {
+			
+			if (Vector2.Distance (myTransform.position, playerTransform.position) <= 2.5) {
+				
 			ShowDialogue ("Mrs Moose", "Hello Human! You are not one of those gangsters are you? You dont look like them so, Bob’s father has 4 children. " +
 				"Momo, Meme, and Mumu are three of them. Who’s the fourth?. A=Mimu B=Bob or C=Mame  ?");
-
+                              //answerA.onClick.AddListener (() => );
+			      //answerC.onClick.AddListener (() => );
+			      answerB.onClick.AddListener (() => ChangeImage(image2, "phone"));
 		}
+			if (Vector2.Distance (myTransform.position, playerTransform.position) >= 2) {
+				
+				cname.text = "";
+				dialogue.text = "";
+			}
+		}		
 
 		if (this.name == "Moose3") {
+			
+			if (Vector2.Distance (myTransform.position, playerTransform.position) <= 2.5) {
+				
 			ShowDialogue ("Ms Moose", "Hello! You look like you need help. Alright, Your dad tells you that he will pay you $6.00 an hour for the 6 seconds " +
 				"that you take to wash your hands before dinner.\nHow much did you make for washing your hands? A=1 cnt , B= 10 cnt or C= 11cnt?");
-
+                             //answerB.onClick.AddListener (() => );
+			     //answerC.onClick.AddListener (() => );
+			     answerA.onCLick.AddListener (() => ChangeImage(image3, "watch"));	
 		}
+			if (Vector2.Distance (myTransform.position, playerTransform.position) >=2) {
+				
+				cname.text = "";
+				dialogue.text = "";
+			}
+			
 	}
 
 	public void ChangeImage (Image image, string item) {
