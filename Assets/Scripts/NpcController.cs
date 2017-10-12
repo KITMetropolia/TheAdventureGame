@@ -28,6 +28,14 @@ public class NpcController : MonoBehaviour {
 	private Button answerB;
 	private Button answerC;
 
+	private AudioSource mooseAudio;
+	private AudioSource rabbitAudio;
+	private AudioSource humanAudio;
+
+	private Image image1;
+	private Image image2;
+	private Image image3;
+
 	//Initialization code  
 	void Start()  
 	{  
@@ -45,7 +53,11 @@ public class NpcController : MonoBehaviour {
 		answerB = GameObject.Find ("AnswerB").GetComponent<Button> ();
 		answerC = GameObject.Find ("AnswerC").GetComponent<Button> ();
 
+		mooseAudio = GetComponent<AudioSource> ();
+		rabbitAudio = GetComponent<AudioSource> ();
+		humanAudio = GetComponent<AudioSource> ();
 
+		image1 = GameObject.Find ("Image1").GetComponent<Image> ();
 	}  
 
 
@@ -67,22 +79,33 @@ public class NpcController : MonoBehaviour {
 	}
 
 	//makes the enemy follow the player  
-	private void Follow()  
-	{  
+	private void Follow()
+	{
+		/*if (Vector2.Distance(myTransform.position, playerTransform.position) <= 3) {
+			if (this.tag == "Human") {
+				humanAudio.Play ();
+			}
+			if (this.tag == "Rabbit") {
+				rabbitAudio.Play ();
+			}
+		}*/
+
 		//only follow the player if this enemy is 3 units away from the player
-		if (Vector2.Distance(myTransform.position, playerTransform.position) <= 3)  
+		if (Vector2.Distance(myTransform.position, playerTransform.position) <= 2.5)  
 		{  
 			myTransform.position = Vector2.MoveTowards (myTransform.position, playerTransform.position, 0.8f * Time.deltaTime);
 			cname.text = this.name.ToString ();
 			if (this.tag == "Human") {
+				humanAudio.Play ();
 				dialogue.text = "Nyt lähtee henki!";
 			}
 			if (this.tag == "Rabbit") {
+				rabbitAudio.Play ();
 				dialogue.text = "RRROOAAARRRGHHH!!!";
 			}
 		}
 
-		if (Vector2.Distance(myTransform.position, playerTransform.position) <= 2) {
+		if (Vector2.Distance(myTransform.position, playerTransform.position) <= 1.5) {
 			bAttack.onClick.AddListener (() => Attack ());
 		}
 
@@ -93,9 +116,15 @@ public class NpcController : MonoBehaviour {
 	}
 
 	public void Speak () {
-		
+
+		if (Vector2.Distance (myTransform.position, playerTransform.position) <= 2) {
+			mooseAudio.Play ();
+		}
+
 		if (this.name == "Moose1") {
-			if (Vector2.Distance (myTransform.position, playerTransform.position) <= 2) {
+
+
+			if (Vector2.Distance (myTransform.position, playerTransform.position) <= 2.5) {
 
 				ShowDialogue ("Mr Moose", "Hello Stranger! Welcome to our forrest! I will help you! You have to collect certain items and " +
 					"to do that you have to find every moose in the forrest. Each of them will tell you a riddle and you have to solve it to be " +
@@ -103,11 +132,12 @@ public class NpcController : MonoBehaviour {
 					"Anyways here is the first riddle: Take off my skin – I won’t cry, but you will! What am I?   \nA= apple , B= human or C= onion?");
 				//answerA.onClick.AddListener (() => );
 				//answerB.onClick.AddListener (() => );
-				//answerC.onClick.AddListener (() => );
+				answerC.onClick.AddListener (() => ChangeImage(image1, "key"));
 
 
 			}
-			if (Vector2.Distance (myTransform.position, playerTransform.position) > 2) {
+			if (Vector2.Distance (myTransform.position, playerTransform.position) >= 2) {
+
 				cname.text = "";
 				dialogue.text = "";
 
@@ -125,6 +155,10 @@ public class NpcController : MonoBehaviour {
 				"that you take to wash your hands before dinner.\nHow much did you make for washing your hands? A=1 cnt , B= 10 cnt or C= 11cnt?");
 
 		}
+	}
+
+	public void ChangeImage (Image image, string item) {
+		image.sprite = Resources.Load<Sprite> (item);
 	}
 
 	public void ShowDialogue (string ch, string dial) {
