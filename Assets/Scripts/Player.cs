@@ -6,13 +6,13 @@ public class Player : MonoBehaviour {
 
 	private string pname = "Pekka";
 	private string weapon = "Knife";
-	private int health = 1000;
+	private int health = 500;
 	private int hunger = 0;
 	private int thirst = 0;
 
-	private const int maxHealth = 1000;
-	private const int maxHunger = 1000;
-	private const int maxThirst = 1000;
+	private const int maxHealth = 500;
+	private const int maxHunger = 500;
+	private const int maxThirst = 500;
 
 	public Player () {
 

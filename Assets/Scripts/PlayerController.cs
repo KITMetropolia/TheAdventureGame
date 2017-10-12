@@ -11,10 +11,6 @@ public class PlayerController : MonoBehaviour {
 
 	public Text info;
 
-	public Weapon knife;
-	public Weapon shotgun;
-	public Weapon rifle;
-
 	public Item carrot;
 	public Item waterbottle;
 
@@ -39,6 +35,10 @@ public class PlayerController : MonoBehaviour {
 	public Text cname;
 	public Text dialogue;
 
+	private Image image1;
+	private Image image2;
+	private Image image3;
+
 	// Use this for initialization
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D> ();
@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour {
 		bDown.onClick.AddListener (() => player.ChangeStats (0, 1, 3));
 
 		bAttack.onClick.AddListener (() => Attack ());
+
+		image1 = GameObject.Find ("Image1").GetComponent<Image> ();
+		image2 = GameObject.Find ("Image2").GetComponent<Image> ();
+		image3 = GameObject.Find ("Image3").GetComponent<Image> ();
 	}
 	
 	// Update is called once per frame
@@ -80,8 +84,8 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 
 		// Player collides with finish marker
-		if (other.gameObject.CompareTag ("Finish")) {
-			info.text = "Pekka! You win a won!";
+		if (other.gameObject.CompareTag ("Finish") && image1.sprite.name == "key" && image2.sprite.name == "phone" && image3.sprite.name == "watch") {
+			info.text = "Pekka! You won a win!";
 		}
 
 		// Player collides with item

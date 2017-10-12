@@ -10,6 +10,7 @@ TagManager:
   - Rabbit
   - Moose
   - Human
+  - CombatZone
   layers:
   - Default
   - TransparentFX

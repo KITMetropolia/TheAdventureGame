@@ -11,8 +11,10 @@ public class NpcController : MonoBehaviour {
 
 	public Npc moose;
 
-	public Text cname;
-	public Text dialogue;
+	private Text cname;
+	private Text cname1;
+	private Text dialogue;
+	private Text dialogue1;
 
 	//a variable to store this game object's Transform  
 	private Transform myTransform;  
@@ -45,7 +47,9 @@ public class NpcController : MonoBehaviour {
 		playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
 		cname = GameObject.Find ("Name").GetComponent<Text> ();
+		cname1 = GameObject.Find ("Name1").GetComponent<Text> ();
 		dialogue = GameObject.Find ("Dialogue").GetComponent<Text> ();
+		dialogue1 = GameObject.Find ("Dialogue1").GetComponent<Text> ();
 
 		bAttack = GameObject.Find ("ButtonAttack").GetComponent<Button> ();
 	
@@ -83,17 +87,9 @@ public class NpcController : MonoBehaviour {
 	//makes the enemy follow the player  
 	private void Follow()
 	{
-		/*if (Vector2.Distance(myTransform.position, playerTransform.position) <= 3) {
-			if (this.tag == "Human") {
-				humanAudio.Play ();
-			}
-			if (this.tag == "Rabbit") {
-				rabbitAudio.Play ();
-			}
-		}*/
 
 		//only follow the player if this enemy is 3 units away from the player
-		if (Vector2.Distance(myTransform.position, playerTransform.position) <= 2.5)  
+		if (Vector2.Distance(myTransform.position, playerTransform.position) <= 3)  
 		{  
 			myTransform.position = Vector2.MoveTowards (myTransform.position, playerTransform.position, 0.8f * Time.deltaTime);
 			cname.text = this.name.ToString ();
@@ -107,7 +103,7 @@ public class NpcController : MonoBehaviour {
 			}
 		}
 
-		if (Vector2.Distance(myTransform.position, playerTransform.position) <= 1.5) {
+		if (Vector2.Distance(myTransform.position, playerTransform.position) <= 1) {
 			bAttack.onClick.AddListener (() => Attack ());
 		}
 
@@ -128,8 +124,8 @@ public class NpcController : MonoBehaviour {
 
 			if (Vector2.Distance (myTransform.position, playerTransform.position) <= 2.5) {
 
-				ShowDialogue ("Mr Moose", "Hello Stranger! Welcome to our forrest! I will help you! You have to collect certain items and " +
-					"to do that you have to find every moose in the forrest. Each of them will tell you a riddle and you have to solve it to be " +
+				ShowDialogue ("Mr Moose", "Hello Stranger! Welcome to our forest! I will help you! You have to collect certain items and " +
+					"to do that you have to find every moose in the forest. Each of them will tell you a riddle and you have to solve it to be " +
 					"able to get a item from the moose.\nYou need to be careful, there are evil creatures in the forest that will try to eat you! " +
 					"Anyways here is the first riddle: Take off my skin – I won’t cry, but you will! What am I?   \nA= apple , B= human or C= onion?");
 				//answerA.onClick.AddListener (() => );
@@ -138,7 +134,7 @@ public class NpcController : MonoBehaviour {
 
 
 			}
-			if (Vector2.Distance (myTransform.position, playerTransform.position) >= 2) {
+			if (Vector2.Distance (myTransform.position, playerTransform.position) > 2.5) {
 
 				cname.text = "";
 				dialogue.text = "";
@@ -150,16 +146,17 @@ public class NpcController : MonoBehaviour {
 			
 			if (Vector2.Distance (myTransform.position, playerTransform.position) <= 2.5) {
 				
-			ShowDialogue ("Mrs Moose", "Hello Human! You are not one of those gangsters are you? You dont look like them so, Bob’s father has 4 children. " +
-				"Momo, Meme, and Mumu are three of them. Who’s the fourth?. A=Mimu B=Bob or C=Mame  ?");
+				cname1.text = "Mrs Moose";
+				dialogue1.text = "Hello Human! You are not one of those gangsters are you? You dont look like them so, Bob’s father has 4 children. " +
+				"Momo, Meme, and Mumu are three of them. Who’s the fourth?. A=Mimu B=Bob or C=Mame  ?";
                               //answerA.onClick.AddListener (() => );
 			      //answerC.onClick.AddListener (() => );
 			      answerB.onClick.AddListener (() => ChangeImage(image2, "phone"));
 		}
 			if (Vector2.Distance (myTransform.position, playerTransform.position) >= 2) {
 				
-				cname.text = "";
-				dialogue.text = "";
+				cname1.text = "";
+				dialogue1.text = "";
 			}
 		}		
 
@@ -167,17 +164,18 @@ public class NpcController : MonoBehaviour {
 			
 			if (Vector2.Distance (myTransform.position, playerTransform.position) <= 2.5) {
 				
-			ShowDialogue ("Ms Moose", "Hello! You look like you need help. Alright, Your dad tells you that he will pay you $6.00 an hour for the 6 seconds " +
+				ShowDialogue ("Ms Moose", "Hello! You look like you need help. Alright, Your dad tells you that he will pay you $6.00 an hour for the 6 seconds " +
 				"that you take to wash your hands before dinner.\nHow much did you make for washing your hands? A=1 cnt , B= 10 cnt or C= 11cnt?");
-                             //answerB.onClick.AddListener (() => );
-			     //answerC.onClick.AddListener (() => );
-			     answerA.onCLick.AddListener (() => ChangeImage(image3, "watch"));	
-		}
-			if (Vector2.Distance (myTransform.position, playerTransform.position) >=2) {
+				//answerB.onClick.AddListener (() => );
+				//answerC.onClick.AddListener (() => );
+				answerA.onClick.AddListener (() => ChangeImage (image3, "watch"));	
+			}
+			/*if (Vector2.Distance (myTransform.position, playerTransform.position) >= 2) {
 				
 				cname.text = "";
 				dialogue.text = "";
-			}
+			}*/
+		}
 			
 	}
 
