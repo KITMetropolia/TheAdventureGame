@@ -164,8 +164,8 @@ public class NpcController : MonoBehaviour {
 			
 			if (Vector2.Distance (myTransform.position, playerTransform.position) <= 2.5) {
 				
-				ShowDialogue ("Ms Moose", "Hello! You look like you need help. Alright, Your dad tells you that he will pay you $6.00 an hour for the 6 seconds " +
-				"that you take to wash your hands before dinner.\nHow much did you make for washing your hands? A=1 cnt , B= 10 cnt or C= 11cnt?");
+				ShowDialogue ("Ms Moose", "Hello! You look like you need help. A mouse runs 10 meters in 20 seconds." +
+				"what is the mouses average speed?  A=0.5m/s , B=1.5m/s  or C= 2.0m/s");
 				//answerB.onClick.AddListener (() => );
 				//answerC.onClick.AddListener (() => );
 				answerA.onClick.AddListener (() => ChangeImage (image3, "watch"));	
