@@ -58,6 +58,8 @@ public class NpcController : MonoBehaviour {
 		humanAudio = GetComponent<AudioSource> ();
 
 		image1 = GameObject.Find ("Image1").GetComponent<Image> ();
+		image2 = GameObject.Find ("Image2").GetComponent<Image> ();
+		image3 = GameObject.Find ("Image3").GetComponent<Image> ();
 	}  
 
 
